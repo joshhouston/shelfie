@@ -13,6 +13,8 @@ massive(CONNECTION_STRING).then(db => {
     console.log('Database Connected')
 })
 
+app.get('/api/inventory', controller.getProducts)
+
 
 
 

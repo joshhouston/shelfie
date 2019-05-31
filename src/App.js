@@ -8,20 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inventory: [
-        {
-          name: 'tshirt',
-          price: 3,
-          imgurl: 'shirt.jpg'
-        },
-        {
-          name: 'jeans',
-          price: 7,
-          imgurl: 'jean.jpg'
-        }
-      ],
-
-      testing: 'test complete'
+      inventory: []
     }
   }
   render() {
