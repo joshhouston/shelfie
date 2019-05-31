@@ -3,6 +3,9 @@ import './App.css';
 import Dashboard from './Components/Dashboard/Dashboard'
 import Form from './Components/Form/Form'
 import Header from './Components/Header/Header'
+import axios from 'axios'
+
+
 
 class App extends Component {
   constructor(props) {
@@ -10,7 +13,23 @@ class App extends Component {
     this.state = {
       inventory: []
     }
+    
+ 
   }
+
+  componentDidMount() {
+    axios
+      .get('/api/inventory')
+      .then(response => {
+        this.setState({inventory: response.data})
+        console.log(this.state.inventory)
+      })
+      .catch(error => {
+        console.log(error)
+        this.setState({error: 'No good'})
+      })
+  }
+
   render() {
     return (
       <div>

@@ -9,6 +9,18 @@ const getProducts = (req, res, next) => {
         })
 }
 
+const addProducts = (req, res, next) => {
+    const db = req.app.get('db')
+    const {name, price, imgurl} = req.body
+
+    db.create_product(name, price, imgurl)
+        .then(() => res.sendStatus(200))
+        .catch(err => {
+            res.status(500).send({errorMessage: 'Something went wrong'})
+        })
+}
+
 module.exports = {
-    getProducts
+    getProducts,
+    addProducts
 }
