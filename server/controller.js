@@ -20,7 +20,20 @@ const addProducts = (req, res, next) => {
         })
 }
 
+const deleteProducts = (req, res, next) => {
+    const db = req.app.get('db')
+    const {id} = req.params
+
+    db.delete_product(id)
+        .then(() => res.sendStatus(200))
+        .catch(err => {
+            res.status(500).send({errorMessage: 'something wrong'})
+            console.log(err)
+        })
+}
+
 module.exports = {
     getProducts,
-    addProducts
+    addProducts,
+    deleteProducts
 }

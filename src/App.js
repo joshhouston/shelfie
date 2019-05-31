@@ -13,13 +13,16 @@ class App extends Component {
     this.state = {
       inventory: []
     }
-    
+    this.getProducts = this.getProducts.bind(this)
  
   }
-
   componentDidMount() {
+    this.getProducts();
+  }
+
+  getProducts() {
     axios
-      .get('/api/inventory')
+      .get('api/inventory')
       .then(response => {
         this.setState({inventory: response.data})
         console.log(this.state.inventory)
@@ -30,12 +33,17 @@ class App extends Component {
       })
   }
 
+  
+
   render() {
     return (
       <div>
         <Header />
-        <Dashboard inventory={this.state.inventory}/>
-        <Form />
+        <Dashboard 
+            inventory={this.state.inventory}
+            getProducts={this.getProducts}
+        />
+        <Form getProducts={this.getProducts}/>
       </div>
 
     );

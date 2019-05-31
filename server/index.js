@@ -15,7 +15,7 @@ massive(CONNECTION_STRING).then(db => {
 
 app.get('/api/inventory', controller.getProducts)
 app.post('/api/product', controller.addProducts)
-
+app.delete('/api/product:id', controller.deleteProducts)
 
 
 
